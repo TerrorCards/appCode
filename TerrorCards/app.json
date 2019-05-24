@@ -1,0 +1,32 @@
+{
+  "expo": {
+    "name": "TerrorCards",
+    "description": "Digital Horror Trading Cards",
+    "slug": "TerrorCards",
+    "privacy": "public",
+    "sdkVersion": "31.0.0",
+    "platforms": ["android"],
+    "version": "2.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "android": {
+      "package": "com.gisgames.terrorcards",
+      "permissions": [
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE"
+      ]      
+    }    
+  }
+}
