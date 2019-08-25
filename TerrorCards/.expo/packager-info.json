@@ -1,10 +1,10 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null,
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 821,
+  "expoServerNgrokUrl": "https://xn-2wh.prev801.terrorcards.exp.direct",
+  "packagerNgrokUrl": "https://packager.xn-2wh.prev801.terrorcards.exp.direct",
+  "ngrokPid": 841,
   "webpackServerPort": null
 }

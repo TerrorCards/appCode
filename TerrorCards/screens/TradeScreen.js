@@ -85,40 +85,60 @@ export default class TradeScreen extends React.Component {
 							return byUser;
 						}
 					});	
-					let buttonsSection =(tradeID) => {
+					let buttonsSection =(tradeID, tradeOwner) => {
 						if(this.state.status == "PENDING") {
-							return(<View key={index+"button"} style={styles.tradeRow}>
-							<View style={styles.halfRow1}>
-								<Button
-									style={styles.halfWidth}
-									onPress={() => {
-										Alert.alert('Terror Cards','Accept Trade',
-										[
-											{text: 'No', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-											{text: 'Yes', onPress: () => {this.executeTrade(tradeID)}, style: 'cancel'},
-										],
-										{ cancelable: false }
-										)}}
-										title={"ACCEPT"}
-										color="#228B22"
-								/> 
-							</View>
-							<View style={styles.halfRow1}>
-								<Button
-									style={styles.halfWidth}
-									onPress={() => {
-										Alert.alert('Terror Cards','Cancel Trade',
-										[
-											{text: 'No', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
-											{text: 'Yes', onPress: () => {this.cancelTrade(tradeID)}, style: 'cancel'},
-										],
-										{ cancelable: false }
-										)}}
-										title={"CANCEL"}
-										color="#FF0000"
-								/> 
-							</View>								 								
-						</View>);
+							if(tradeOwner === this.state.userId) {
+								return(<View key={index+"button"} style={styles.tradeRow}>
+								<View style={styles.fullWidth}>
+									<Button
+										style={styles.fullWidth}
+										onPress={() => {
+											Alert.alert('Terror Cards','Cancel Trade',
+											[
+												{text: 'No', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+												{text: 'Yes', onPress: () => {this.cancelTrade(tradeID)}, style: 'cancel'},
+											],
+											{ cancelable: false }
+											)}}
+											title={"CANCEL"}
+											color="#FF0000"
+									/> 
+								</View>								 								
+							</View>);								
+							} else {
+								return(<View key={index+"button"} style={styles.tradeRow}>
+								<View style={styles.halfRow1}>
+									<Button
+										style={styles.halfWidth}
+										onPress={() => {
+											Alert.alert('Terror Cards','Accept Trade',
+											[
+												{text: 'No', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+												{text: 'Yes', onPress: () => {this.executeTrade(tradeID)}, style: 'cancel'},
+											],
+											{ cancelable: false }
+											)}}
+											title={"ACCEPT"}
+											color="#228B22"
+									/> 
+								</View>
+								<View style={styles.halfRow1}>
+									<Button
+										style={styles.halfWidth}
+										onPress={() => {
+											Alert.alert('Terror Cards','Cancel Trade',
+											[
+												{text: 'No', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+												{text: 'Yes', onPress: () => {this.cancelTrade(tradeID)}, style: 'cancel'},
+											],
+											{ cancelable: false }
+											)}}
+											title={"CANCEL"}
+											color="#FF0000"
+									/> 
+								</View>								 								
+							</View>);
+							}
 						}
 					}
 					if(filterByUser.length > 0 || filterByOther.length > 0) {
@@ -181,7 +201,7 @@ export default class TradeScreen extends React.Component {
 											/>								
 									</View>
 								</View>	
-								{buttonsSection(tradeID)}
+								{buttonsSection(tradeID, filterByID[0].tradeOwner)}
 							</View>					
 						);				
 					}
@@ -502,6 +522,9 @@ const styles = StyleSheet.create({
 		width: 75,
 		height: 100
 	},
+	fullWidth: {
+		width: Dimensions.get('window').width
+	},	
 	halfWidth: {
 		width: Dimensions.get('window').width / 2
 	},

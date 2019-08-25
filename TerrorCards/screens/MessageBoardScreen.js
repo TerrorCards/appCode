@@ -252,6 +252,7 @@ export default class MessageBoardScreen extends React.Component {
   }
 
   closeModal =() => {
+    console.log("here");
     this.setState({modalVisible: false});
   }
 

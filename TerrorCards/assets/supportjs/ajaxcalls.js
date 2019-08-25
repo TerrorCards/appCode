@@ -41,7 +41,22 @@ export function callServer(pTask,pData,pUserId) {
             });
             return test;
             break;
-        }        
+        }  
+        case "cardCount": {
+          var jsonstr = prepData(pData);
+          let formData  = new FormData();
+          formData.append("uUserId", pUserId);
+          formData.append("uContent", jsonstr);
+          let test = fetch(serverpath + "cards_count.php", {
+            method: 'POST',
+            headers: {
+              "Content-Type": 'multipart/form-data'
+            },
+            body: formData
+          });
+          return test;
+          break;
+        }               
         case "userInfo": {
             var jsonstr = prepData(pData);
             let formData  = new FormData();

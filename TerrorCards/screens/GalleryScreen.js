@@ -33,7 +33,8 @@ export default class GalleryScreen extends React.Component {
       overlayerVisible: false,
       overlayImage: "",
       userId: null,
-      userProfile: null
+      userProfile: null,
+      cardCount: 0
     }
   }
 
@@ -115,7 +116,7 @@ export default class GalleryScreen extends React.Component {
           style={styles.gridView}
           renderItem={({ item }) => (
             <View style={styles.itemContainer}>
-              <TouchableWithoutFeedback onPress={() => {this._getFullCard(item.url);}}>
+              <TouchableWithoutFeedback onPress={() => {this._getFullCard(item.url, item.SetName, item.Name, item.CardYear);}}>
                 <Image source={{uri: item.url }} style={[styles.itemImage, {opacity:item.visual}]}/>
               </TouchableWithoutFeedback>
               {item.count > 1 && <View style={{position: 'absolute', top: 10, left: 0, alignContent:"center", alignItems:"flex-start"}}>
@@ -140,8 +141,11 @@ export default class GalleryScreen extends React.Component {
 							size={35}
 							style={styles.closeIcon}
 							/>  
-						</TouchableWithoutFeedback>  					
-						<Image source={{uri: this.state.overlayImage }} style={styles.fullImage} resizeMode={'contain'}/>
+						</TouchableWithoutFeedback> 
+            <Text style={{ color: 'black' }}>{"Card Count: " + this.state.cardCount}</Text>  
+            <TouchableWithoutFeedback onPress={() => {this._getFullCardFlip(this.state.overlayImage)}}>
+              <Image source={{uri: this.state.overlayImage }} style={styles.fullImage} resizeMode={'contain'}/>           
+            </TouchableWithoutFeedback>					
 					</View>
 				</Overlay>
 
@@ -169,8 +173,8 @@ export default class GalleryScreen extends React.Component {
         {title: "Insert", data: insertList},
         {title: "Base", data: baseList}
       ];
-      this.state.imageControl = cardList;
-      this.setState({images:cardList});
+      //this.state.imageControl = cardList;
+      this.setState({images:cardList, imageControl: cardList});
     })
     .catch((error) => { 
       console.error(error);
@@ -185,10 +189,23 @@ export default class GalleryScreen extends React.Component {
       json.forEach(element => {
         sets.push({ "setName": element.SetName, "year": element.Year });
       });
-      this.state.setListControl = sets;
-      this.state.setList = sets;
-      //this.setState({setList:sets});
-      this.filterSets(this.state.initYear);
+      //this.state.setListControl = sets;
+      //this.state.setList = sets;
+      this.setState({setList:sets, setListControl: sets}, () => {
+        this.filterSets(this.state.initYear);        
+      });
+    })
+    .catch((error) => { 
+      console.error(error);
+    });
+  }
+
+  requestCardCount = async (params) => {
+    let result =  callServer("cardCount", params, this.state.userId)
+    .then((resp)=>{ return resp.json(); })
+    .then((json)=>{ 
+      console.log(json);
+      this.setState({cardCount: json.count});
     })
     .catch((error) => { 
       console.error(error);
@@ -254,9 +271,21 @@ export default class GalleryScreen extends React.Component {
   }
 
   //Show card in detail
-  _getFullCard =(img) => {
+  _getFullCard =(img, set, name, year) => {
+    let params = {set: set, name: name, year: year, node:null};
+    this.requestCardCount(params);
     let fullImg = img.replace("thumbs", "full");
     this.setState({overlayImage: fullImg, overlayerVisible: true});
+  }
+
+  _getFullCardFlip =(img) => {
+    let fullImg = img;
+    if(img.indexOf("back/") > -1) {
+      fullImg = img.replace("back/", "front/"); 
+    } else {
+      fullImg = img.replace("front/", "back/");
+    }
+    this.setState({overlayImage: fullImg});
   }
 
 	onCloseOverlay =() => {
