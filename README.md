@@ -6,3 +6,9 @@
 	2. validation of purchases server side, php (if using IAP from first link)
 3. Instructions on how to run and build ejected application in Xcode and Android Developer Studio
 4. Compiled iOS and Android apk ready for store submittal in case I can not build on my environment
+
+
+
+## Current Environment
+1. Xcode Version 8.2.1 (8C1002)
+2. Android Studio 3.3.2 (feb 2019)
