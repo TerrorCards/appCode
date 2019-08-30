@@ -28,6 +28,7 @@ import { Overlay } from 'react-native-elements';
 import { callServer, prepData, serverpath } from '../assets/supportjs/ajaxcalls';
 import { ImagePicker , Permissions, Constants} from 'expo';
 import TradeSetupScreen from './TradeSetupScreen';
+import HuntingGroundsScreen from './HuntingGroundsScreen';
 
 export default class SettingSlideOut extends React.Component {
   static navigationOptions = {
@@ -44,6 +45,7 @@ export default class SettingSlideOut extends React.Component {
       contactusModal: false,
       newsModal: false,
       friendsModal: false,
+      huntingGroundsModal:false,
       userNameInput: "",
       userPasswordInput: "",
       userEmailInput: "",
@@ -238,7 +240,33 @@ console.log(this.state.avatar);
                   </View>
                 </Modal>
 
-
+               <Modal
+                  animationType="slide"
+                  transparent={false}
+                  backdropOpacity={0.1}
+                  visible={this.state.huntingGroundsModal}
+                  swipeToClose={true}
+                  onRequestClose={() => {
+                    //this._retrieveData();
+                  }}>
+                  <View style={{marginTop: 0, marginLeft:0, flex:1}}>
+                  <ImageBackground
+                    style={{flex: 1}}
+                    source={require('../assets/images/tc_app_bg.jpg') } >                 
+                    <View style={styles.overlayContainer}>
+                      <TouchableWithoutFeedback onPress={() => {this.setState({huntingGroundsModal:false})}}>
+                      <Icon
+                        name={Platform.OS === "ios" ? "ios-close" : "md-close"}
+                        color="#ccc"
+                        size={35}
+                        style={styles.closeIcon}
+                        />  
+                      </TouchableWithoutFeedback>  					 
+                    </View>
+                    <HuntingGroundsScreen />
+                    </ImageBackground>
+                  </View>
+                </Modal>
 
                 <Modal
                   animationType="slide"
@@ -452,12 +480,15 @@ console.log(this.state.avatar);
   }
 
   showHuntingGrounds =() => {
+    this.setState({huntingGroundsModal:true});
+    /*
     Alert.alert(
       'Terror Cards',
       "COMING SOON!",
       [{text: 'OK'}],
       {cancelable: false},
-    );     
+    );
+    */     
   }
 
   _requestNews = async() => {
