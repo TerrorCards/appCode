@@ -3,7 +3,9 @@ import { ScrollView, StyleSheet, FlatList, View, Image, Text, Dimensions, Alert,
 import { Button } from "react-native-elements";
 import { copilot, walkthroughable, CopilotStep } from '@okgrow/react-native-copilot';
 import * as RNIap from 'react-native-iap';
- 
+import { callServer, prepData, serverpath } from '../assets/supportjs/ajaxcalls';
+
+/*
 const itemSkus = Platform.select({
   ios: [
     'tc_25k'
@@ -13,6 +15,7 @@ const itemSkus = Platform.select({
   'tc_750k'
   ]
 });
+*/
 
 const CopilotText = walkthroughable(View);
 
@@ -20,12 +23,13 @@ class InAppPurchase extends React.Component {
   constructor(props) {
     super(props); 
     this.state = { 
-    productList:[]
+      productList:[],
+      itemSkus: null,
     };
   }
 
   componentWillMount() {
-    //this._getData();
+    this.requestIAPItems();
   }
 
   async componentDidMount() {
@@ -63,6 +67,29 @@ class InAppPurchase extends React.Component {
         </View>
     );
   }
+
+  requestIAPItems = async() => {
+    await callServer("loadInAppItems", "", this.props.userId)
+    .then((resp)=>{ return resp.json(); })
+    .then((json)=>{ 
+      console.log(json);
+      if(json.length > 0) {
+          let items = [];
+          json.map((iap) => {
+            items.push(iap.ID);
+          });
+          let list = Platform.select({
+            ios: items,
+            android: items
+          });         
+          this.setState({itemSkus: list});
+      }
+    })
+    .catch((error) => { 
+      console.error(error);
+    });		
+  }
+
 
     //end
 }

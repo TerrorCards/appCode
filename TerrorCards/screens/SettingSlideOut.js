@@ -263,7 +263,7 @@ console.log(this.state.avatar);
                         />  
                       </TouchableWithoutFeedback>  					 
                     </View>
-                    <HuntingGroundsScreen />
+                    <HuntingGroundsScreen userId={this.props.userId} />
                     </ImageBackground>
                   </View>
                 </Modal>

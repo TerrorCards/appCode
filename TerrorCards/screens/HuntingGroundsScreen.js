@@ -38,7 +38,7 @@ export default class HuntingGroundsScreen extends React.Component {
   }
  
   componentWillMount() {
-
+	this.requestOpponentList();
 	//this._retrieveData();
 
   }
@@ -165,6 +165,21 @@ export default class HuntingGroundsScreen extends React.Component {
 		  ); 		
 	}
 	
+	requestOpponentList = async() => {
+		await callServer("battlePlayerList", "", this.props.userId)
+		.then((resp)=>{ return resp.json(); })
+		.then((json)=>{ 
+		  console.log("i am" + json);
+		  if(json) {
+		            
+		  }
+		})
+		.catch((error) => { 
+		  console.error(error);
+		});		
+	}
+
+
     //end
 }
  
