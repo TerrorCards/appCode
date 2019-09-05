@@ -13,6 +13,7 @@ Directions to get to In App Purchase
 2. Create a new account
 3. On the bottom menu, tap on the store (shopping cart)
 4. There is a button on top to purchase credit.
+5. (look at jpg in this branch to see what the in app purchase should look like)
 
 ## Current Environment
 1. Xcode Version 9.2 (9C40b)
