@@ -8,7 +8,11 @@
 4. Instructions on how to run ejected application in React Native for further development and debugging.
 5. Instructions on how to extend the ejected application with additional react native modules for future enhancements.
 
-
+Directions to get to In App Purchase
+1. Run code
+2. Create a new account
+3. On the bottom menu, tap on the store (shopping cart)
+4. There is a button on top to purchase credit.
 
 ## Current Environment
 1. Xcode Version 9.2 (9C40b)
