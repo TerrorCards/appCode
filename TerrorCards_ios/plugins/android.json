@@ -1,0 +1,32 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "cc.fovea.cordova.purchase": {
+      "BILLING_KEY": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmvDNiQ4vLR1QTxvY7IXiaZgcF9gqcnoxHwUvGA1ZmUFBzcoF7ZdnkUkv537X7B7T53jPALMFKThF7tG8ZYFt9SMR5KOjtR4AdyP/SK01y5bRUXiAZl/0pkU1wnzz3bafU31SOsqJbc4Jmj7bNMFgS4eRMd4blyb7OejjAEz+/RlavKYF1zbYIL4BI5WqzHS04rtpBznYZp5E7EfVF3fQJAm3JRxuq2t92EsP6VmLyrjzxwFTQzUkRLiSBhZ0y9B0BJRO3GLt7Ca43nqudScIfHkCsywBcK3sFoF54dwedNbGDiL/AOB9td1bgFDaiZ0KmRBTCOIKIna37oa5qfxldwIDAQAB",
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "cordova-plugin-camera": {
+      "ANDROID_SUPPORT_V4_VERSION": "27.+",
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "io.cordova.hellocordova"
+    }
+  },
+  "dependent_plugins": {}
+}

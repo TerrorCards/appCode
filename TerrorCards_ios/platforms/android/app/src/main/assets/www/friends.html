@@ -1,0 +1,43 @@
+<div class="pages">
+  <div data-page="projects" class="page no-toolbar no-navbar">
+    <div class="page-content">
+    
+     <div class="navbarpages_gallery">
+     	<div style="padding-bottom: 10px">
+       		<div class="nav_left_logo"><a href="#" data-panel="right" class="open-panel"><img src="images/icons/white/menu.png" alt="" title="" /></a></div>
+       		<div class="nav_right_button rightPad"><a href="index.html" class=" right-home-button"><h1>Home</h1></a></div>     	
+     	</div>
+     
+      	<div class="page_title_friends">
+      		<div style="float: left; font-weight:bold; font-size:medium" onclick="pullFriendsList(gUser.ID)">Friends</div>
+        	<div style="float: right">
+        		<div style="padding-right: 10px">
+					<input type="text" id="txtUserSearch" maxlength="25" onkeyup="searchFriend()" style="width:200px;"  placeholder="Search Users">      			
+        		</div>
+        	</div>
+      	</div>     
+     </div>
+     
+     <div id="pages_maincontent_gallery">
+
+       <div class="page_content">
+       	<div id="searchUserNode" style="display:none">
+       		<div class="blockHeader">Search Result</div>
+       		<div id="searchUserList"></div>
+       	</div>
+       	<hr width="100%">
+       	<div class="blockHeader">Your Friends</div>       	
+       	<div id="friendList"></div>
+       	<div style="height:25px;"></div>
+       	<hr width="100%">
+       	<div class="blockHeader">Players Blocked</div>
+       	<div id="blockList"></div>
+		<div class="clear"></div>  
+      </div>
+      
+      </div>
+      
+      
+    </div>
+  </div>
+</div>

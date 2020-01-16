@@ -1,0 +1,33 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cc.fovea.cordova.purchase": {
+            "PACKAGE_NAME": "com.gisgames.terrorcards"
+        },
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.gisgames.terrorcards"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.gisgames.terrorcards"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "com.gisgames.terrorcards"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "com.gisgames.terrorcards"
+        },
+        "cordova-plugin-inapppurchase": {
+            "PACKAGE_NAME": "com.gisgames.terrorcards"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.gisgames.terrorcards"
+        }
+    },
+    "dependent_plugins": {}
+}
