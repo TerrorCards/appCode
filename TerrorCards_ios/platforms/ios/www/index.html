@@ -30,7 +30,7 @@
                 <div class="user_thumb">
                 	<img src="images/profile.jpg" id="mainProfilePic" alt="" title="" width="100" height="100" />
                   	<div class="user_details">
-                   		<p>Hi, <span id="userName"></span></p>
+                   		<span id="userName"></span>
                   	</div>                 	                                   
                   	<div class="user_social">
                   		<a href="#"  onclick="chooseProfilePic();"><img src="images/icons/white/photos.png" alt="" title="" /></a>
@@ -39,9 +39,12 @@
 				<hr/>
                   <nav class="user-nav">
                     <ul>
-                    	<li id="needRegister"><a href="#" data-popup=".popup-signup" class="open-popup"><img src="images/icons/white/user.png" alt="" title="" /><span>REGISTER NOW!</span></a></li>
-                  		<li><a><img src="images/icons/white/user.png" alt="" title="" /><span id="creditHolder"></span></a></li>
-                  		<li><a><img src="images/icons/white/award.png" alt="" title="" /><span id="ratingHolder"></span></a></li>
+                    	<li id="needRegister"><a href="#" data-popup=".popup-signup" class="open-popup"><img src="images/icons/white/user_white.png" alt="" title="" /><span>REGISTER NOW!</span></a></li>
+                  		<li><a><img src="images/icons/white/user_white.png" alt="" title="" /><span id="creditHolder"></span></a></li>
+                      <li><a><img src="images/icons/white/award.png" alt="" title="" /><span id="ratingHolder"></span></a></li>
+                    </ul>
+                    <br><br>
+                    <ul>
                   		<li><a href="news.html" class="close-panel" onclick="pullNews();"><img src="images/icons/white/docs.png" alt="" title="" /><span>News</span></a></li>
                   		<li><a href="friends.html" class="close-panel" onclick="pullFriendsList(gUser.ID);"><img src="images/icons/white/team.png" alt="" title="" /><span>Friends</span></a></li>  	
                       	<li><a href="help.html" class="close-panel"><img src="images/icons/white/settings.png" alt="" title="" /><span>Help Guide</span></a></li>
@@ -98,8 +101,9 @@
                 	<div class="indexContent_new_post">
                 		<table width="100%">
                 			<tr>
-                				<td width="50%" style="text-align: left;"><a onclick="pullMessagesSmall();"><img src="images/refresh.png" width="20"> Refresh</a></td>
-                				<td width="50%" style="text-align: right;">Post <a id="msgPostButton" href="postMessage.html"><img src="images/edit_post.png" width="25"></a></td>
+                				<td width="33%" style="text-align: left;"><a onclick="pullMessagesSmall();"><img src="images/refresh.png" width="20"> Refresh</a></td>
+                        <td width="33%" style="text-align: center;"><a onclick="ShowHelpAlert('Home');">Help</a></td>
+                        <td width="33%" style="text-align: right;">Post <a id="msgPostButton" href="postMessage.html"><img src="images/edit_post.png" width="25"></a></td>
                 			</tr>
                 		</table>
                 	</div>
@@ -375,5 +379,6 @@ This APP contains user-defined content. By installing this APP, you agree to not
 <script type="text/javascript" src="js/image.js"></script>
 <script type="text/javascript" src="js/battle.js"></script>
 <script type="text/javascript" src="js/gallery.js"></script>
+<script type="text/javascript" src="js/help.js"></script>
   </body>
 </html>

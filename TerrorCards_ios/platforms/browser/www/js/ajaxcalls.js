@@ -1,4 +1,4 @@
-var serverpath = "http://s787721743.onlinehome.us/CardTemplate/";
+//var serverpath = "http://s787721743.onlinehome.us/CardTemplate/";
 var serverpath = "http://gisgames.com/CardTemplate/";
 
 function prepData(pData) {

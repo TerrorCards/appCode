@@ -18,6 +18,20 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <icon height="1024" platform="ios" src="icon.png" width="1024" />
+    <icon height="1024" platform="ios" src="icon-1024.png" width="1024" />
+    <icon height="180" platform="ios" src="icon-60@3x.png" width="180" />
+    <icon height="60" platform="ios" src="icon-60.png" width="60" />
+    <icon height="120" platform="ios" src="icon-60@2x.png" width="120" />
+    <icon height="76" platform="ios" src="icon-76.png" width="76" />
+    <icon height="152" platform="ios" src="icon-76@2x.png" width="152" />
+    <icon height="167" platform="ios" src="icon-83.5@2x.png" width="167" />
+    <icon height="29" platform="ios" src="icon-small.png" width="29" />
+    <icon height="58" platform="ios" src="icon-small@2x.png" width="58" />
+    <icon height="87" platform="ios" src="icon-small@3x.png" width="87" />
+    <icon height="40" platform="ios" src="icon-40.png" width="40" />
+    <icon height="80" platform="ios" src="icon-40@2x.png" width="80" />
+    <icon height="120" platform="ios" src="icon-40@3x.png" width="120" />
     <preference name="permissions" value="none" />
     <preference name="orientation" value="portrait" />
     <preference name="target-device" value="universal" />
@@ -28,5 +42,6 @@
     <preference name="show-splash-screen-spinner" value="true" />
     <preference name="auto-hide-splash-screen" value="true" />
     <preference name="CameraUsesGeolocation" value="false" />
-    <preference name="AndroidPersistentFileLocation" value="Compatibility" />
+    <preference name="phonegap-version" value="cli-7.1.0" />
+    <preference name="deployment-target" value="8.0" />
 </widget>

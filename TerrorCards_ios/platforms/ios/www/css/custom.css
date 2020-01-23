@@ -61,7 +61,7 @@ background-size: cover;
 }
 
 .indexContent_news {
-    width: 95%;
+    width: 98%;
     height: 55%; 
     position: relative; 
     text-align: left; 
@@ -311,8 +311,9 @@ background-size: cover;
 	width: 100%;
 	height: 85px;
 	display:block;
-    background-image: url("../images/trade-help-bg.jpg");
-    background-repeat:no-repeat;	
+    background-image: url("../images/trade-help-bg.png");
+	background-repeat:no-repeat;
+	background-position: center;	
 }
 
 .preview-Trade-Other {
@@ -320,8 +321,9 @@ background-size: cover;
 	width: 100%;
 	height: 85px;	
 	display:none;
-    background-image: url("../images/trade-help-bg.jpg");
-    background-repeat:no-repeat;	
+    background-image: url("../images/trade-help-bg.png");
+	background-repeat:no-repeat;
+	background-position: center;	
 }
 
 .msg-style {
@@ -461,7 +463,7 @@ position: relative;
 left: 0; 
 right: 0; 
 bottom: 0px;
-height:100%;
+height:85%;
 overflow: scroll; 
 -webkit-overflow-scrolling: touch;
 }

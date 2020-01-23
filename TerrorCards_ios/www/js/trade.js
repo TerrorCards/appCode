@@ -91,120 +91,122 @@ function loadUserTradeCards(pArray) {
 }
 
 function setCardTradeInfo(pArray, pUser) {
-	if (pArray.length > 0) {
-		var cardInfo;
-		var statHolder;
-		var currCard = "";
-		var currSet = "";
-		var currCount = 1;
-		$.each(pArray, function(index, value) {
-			//TODO loop though exisitng list and set the proper count if card list is refreshed but still has cards that exist in the tradelist
-			if (gTradeListYou.length > 0) {
-				$.each(gTradeListYou, function(index, val) {
-					if (val.ID == value.ID) {
-						value.RuntimeCount = value.RuntimeCount - val.RuntimeCount;
-					}
-				});
-			}
-			if (gTradeListOther > 0) {
-				$.each(gTradeListOther, function(index, val) {
-					if (val.ID == value.ID) {
-						value.RuntimeCount = value.RuntimeCount - val.RuntimeCount;
-					}
-				});
-			}
-
-			cardInfo = value;
-			cardInfo.index = index;
-			statHolder = '<div class="card_header">';
-			if (cardInfo.RuntimeCount == "1") {
-				statHolder = statHolder + '<div class="card_header_count" id="' + cardInfo.ID + '_count"></div>';
-			} else {
-				statHolder = statHolder + '<div class="card_header_count" id="' + cardInfo.ID + '_count">' + cardInfo.RuntimeCount + '</div>';
-			}
-			statHolder = statHolder + '<div class="card_header_message" id="' + cardInfo.ID + '_cardCountTrade"></div>';
-			statHolder = statHolder + '<div>';
-			var item = '<li>' + statHolder;
-			item = item + '<img src="images/waitSmall.png" data-src="' + cardInfo.Image + '" id="' + cardInfo.ID + '_image" alt="' + cardInfo.ID + '" class="tradeItemButton lazy-trade" />';
-			item = item + '</div></li>';
-
-			if (cardInfo.UserID == pUser) {
-				if (pUser == gUser.ID) {
-					/*
-					 if(cardInfo.Type == "Insert" || cardInfo.Type == "Award") {
-					 $("#trade_tradelist_1_insert").append(item);
-					 } else {
-					 $("#trade_tradelist_1_base").append(item);
-					 }
-					 */
-					$("#trade_tradelist_1_cards").append(item);
-					$("#" + cardInfo.ID + "_image").on("tap", (function(cardInfo) {
-						return function() {
-							TradeCardCount(cardInfo.Name, cardInfo.SetName, cardInfo.Card_Year, cardInfo.ID + "_cardCountTrade");
-						};
-					})(cardInfo));
-					$("#" + cardInfo.ID + "_image").on("doubletap", (function(cardInfo) {
-						return function() {
-							var currClass = $(this).attr("class");
-							if ($(this).hasClass( "tradeItemButton" )) {
-								if (gTradeListYou.length >= 9) {
-									//show alert
-								} else {
-									if (checkCardCountTrade(cardInfo, "you", this)) {
-										AddTradeList(cardInfo, "you", index + '_' + cardInfo.ID, gTradeListYou, this);
-									}
-								}
-							} else {
-								if (gTradeListYou.length <= 0) {
-									//show alert
-								} else {
-									if (checkCardCountTrade(cardInfo, "you", this)) {
-										AddTradeList(cardInfo, "you", index + '_' + cardInfo.ID, gTradeListYou, this);
-									}
-								}
-							}
-						};
-					})(cardInfo));
-				} else {
-					/*
-					 if(cardInfo.Type == "Insert" || cardInfo.Type == "Award") {
-					 $("#trade_tradelist_2_insert").append(item);
-					 } else {
-					 $("#trade_tradelist_2_base").append(item);
-					 }
-					 */
-					$("#trade_tradelist_2_cards").append(item);
-					$("#" + cardInfo.ID + "_image").on("tap", (function(cardInfo) {
-						return function() {
-							TradeCardCount(cardInfo.Name, cardInfo.SetName, cardInfo.Card_Year, cardInfo.ID + "_cardCountTrade");
-						};
-					})(cardInfo));
-					$("#" + cardInfo.ID + "_image").on("doubletap", (function(cardInfo) {
-						return function() {
-							var currClass = $(this).attr("class");
-							if ($(this).hasClass( "tradeItemButton" )) {
-								if (gTradeListOther.length >= 9) {
-									//show alert
-								} else {
-									if (checkCardCountTrade(cardInfo, "other", this)) {
-										AddTradeList(cardInfo, "other", index + '_' + cardInfo.ID, gTradeListOther, this);
-									}
-								}
-							} else {
-								if (gTradeListOther.length <= 0) {
-									//show alert
-								} else {
-									if (checkCardCountTrade(cardInfo, "other", this)) {
-										AddTradeList(cardInfo, "other", index + '_' + cardInfo.ID, gTradeListOther, this);
-									}
-								}
-							}
-						};
-					})(cardInfo));
+	if(typeof(pArray) !== "undefined") {
+		if (pArray.length > 0) {
+			var cardInfo;
+			var statHolder;
+			var currCard = "";
+			var currSet = "";
+			var currCount = 1;
+			$.each(pArray, function(index, value) {
+				//TODO loop though exisitng list and set the proper count if card list is refreshed but still has cards that exist in the tradelist
+				if (gTradeListYou.length > 0) {
+					$.each(gTradeListYou, function(index, val) {
+						if (val.ID == value.ID) {
+							value.RuntimeCount = value.RuntimeCount - val.RuntimeCount;
+						}
+					});
 				}
-			}
-		});
-		lzlTrade.update();
+				if (gTradeListOther > 0) {
+					$.each(gTradeListOther, function(index, val) {
+						if (val.ID == value.ID) {
+							value.RuntimeCount = value.RuntimeCount - val.RuntimeCount;
+						}
+					});
+				}
+	
+				cardInfo = value;
+				cardInfo.index = index;
+				statHolder = '<div class="card_header">';
+				if (cardInfo.RuntimeCount == "1") {
+					statHolder = statHolder + '<div class="card_header_count" id="' + cardInfo.ID + '_count"></div>';
+				} else {
+					statHolder = statHolder + '<div class="card_header_count" id="' + cardInfo.ID + '_count">' + cardInfo.RuntimeCount + '</div>';
+				}
+				statHolder = statHolder + '<div class="card_header_message" id="' + cardInfo.ID + '_cardCountTrade"></div>';
+				statHolder = statHolder + '<div>';
+				var item = '<li>' + statHolder;
+				item = item + '<img src="images/waitSmall.png" data-src="' + cardInfo.Image + '" id="' + cardInfo.ID + '_image" alt="' + cardInfo.ID + '" class="tradeItemButton lazy-trade" />';
+				item = item + '</div></li>';
+	
+				if (cardInfo.UserID == pUser) {
+					if (pUser == gUser.ID) {
+						/*
+						 if(cardInfo.Type == "Insert" || cardInfo.Type == "Award") {
+						 $("#trade_tradelist_1_insert").append(item);
+						 } else {
+						 $("#trade_tradelist_1_base").append(item);
+						 }
+						 */
+						$("#trade_tradelist_1_cards").append(item);
+						$("#" + cardInfo.ID + "_image").on("tap", (function(cardInfo) {
+							return function() {
+								TradeCardCount(cardInfo.Name, cardInfo.SetName, cardInfo.Card_Year, cardInfo.ID + "_cardCountTrade");
+							};
+						})(cardInfo));
+						$("#" + cardInfo.ID + "_image").on("doubletap", (function(cardInfo) {
+							return function() {
+								var currClass = $(this).attr("class");
+								if ($(this).hasClass( "tradeItemButton" )) {
+									if (gTradeListYou.length >= 9) {
+										//show alert
+									} else {
+										if (checkCardCountTrade(cardInfo, "you", this)) {
+											AddTradeList(cardInfo, "you", index + '_' + cardInfo.ID, gTradeListYou, this);
+										}
+									}
+								} else {
+									if (gTradeListYou.length <= 0) {
+										//show alert
+									} else {
+										if (checkCardCountTrade(cardInfo, "you", this)) {
+											AddTradeList(cardInfo, "you", index + '_' + cardInfo.ID, gTradeListYou, this);
+										}
+									}
+								}
+							};
+						})(cardInfo));
+					} else {
+						/*
+						 if(cardInfo.Type == "Insert" || cardInfo.Type == "Award") {
+						 $("#trade_tradelist_2_insert").append(item);
+						 } else {
+						 $("#trade_tradelist_2_base").append(item);
+						 }
+						 */
+						$("#trade_tradelist_2_cards").append(item);
+						$("#" + cardInfo.ID + "_image").on("tap", (function(cardInfo) {
+							return function() {
+								TradeCardCount(cardInfo.Name, cardInfo.SetName, cardInfo.Card_Year, cardInfo.ID + "_cardCountTrade");
+							};
+						})(cardInfo));
+						$("#" + cardInfo.ID + "_image").on("doubletap", (function(cardInfo) {
+							return function() {
+								var currClass = $(this).attr("class");
+								if ($(this).hasClass( "tradeItemButton" )) {
+									if (gTradeListOther.length >= 9) {
+										//show alert
+									} else {
+										if (checkCardCountTrade(cardInfo, "other", this)) {
+											AddTradeList(cardInfo, "other", index + '_' + cardInfo.ID, gTradeListOther, this);
+										}
+									}
+								} else {
+									if (gTradeListOther.length <= 0) {
+										//show alert
+									} else {
+										if (checkCardCountTrade(cardInfo, "other", this)) {
+											AddTradeList(cardInfo, "other", index + '_' + cardInfo.ID, gTradeListOther, this);
+										}
+									}
+								}
+							};
+						})(cardInfo));
+					}
+				}
+			});
+			lzlTrade.update();
+		}
 	}
 }
 
@@ -424,20 +426,24 @@ function ConfirmTradeList() {
 
 function SaveTrade() {
 	gTradeList = [];
-	$.each(gTradeListYou, function(index, result) {
-		gTradeList.push(result);
-	});
-	$.each(gTradeListOther, function(index, result) {
-		gTradeList.push(result);
-	});
-	var dataTransfer = {};
-	dataTransfer.trade = gTradeList;
-	dataTransfer.msg = "";
-	var msg = htmlEntities($("#tradeMessageInput").val());
-	if (msg !== "") {
-		dataTransfer.msg = msg;
+	if((gTradeListYou.length <= 9 && gTradeListYou.length >= 1) && (gTradeListOther.length <= 9 && gTradeListOther.length >= 1)) {
+		$.each(gTradeListYou, function(index, result) {
+			gTradeList.push(result);
+		});
+		$.each(gTradeListOther, function(index, result) {
+			gTradeList.push(result);
+		});
+		var dataTransfer = {};
+		dataTransfer.trade = gTradeList;
+		dataTransfer.msg = "";
+		var msg = htmlEntities($("#tradeMessageInput").val());
+		if (msg !== "") {
+			dataTransfer.msg = msg;
+		}
+		callServer("saveTrade", dataTransfer, gUser.ID, TradeConfirmResponse);		
+	} else {
+		myApp.alert("Error occurred, please check the trade again", 'Terror Cards');
 	}
-	callServer("saveTrade", dataTransfer, gUser.ID, TradeConfirmResponse);
 }
 
 function promptTrade(pTradeID) {
@@ -476,12 +482,12 @@ function CheckActiveTades() {
 function ShowActiveTradeIdicator(pArray) {
 	if (pArray.length > 0) {
 		if (pArray[0].count >= 1) {
-			$("#tradeMenuIcon").attr('src', '../www/images/icons/white/retweet_active.png');
+			$("#tradeMenuIcon").attr('src', 'images/icons/white/retweet_active.png');
 		} else {
-			$("#tradeMenuIcon").attr('src', '../www/images/icons/white/retweet.png');
+			$("#tradeMenuIcon").attr('src', 'images/icons/white/retweet.png');
 		}
 	} else {
-		$("#tradeMenuIcon").attr('src', '../www/images/icons/white/retweet.png');
+		$("#tradeMenuIcon").attr('src', 'images/icons/white/retweet.png');
 	}
 }
 

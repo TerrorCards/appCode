@@ -9,20 +9,21 @@ function market_loadActivePacks(pArray) {
           var packInfo = value;
           var packObj = "";
           packObj = packObj + '<li class="table_row">';
-          packObj = packObj + '<div class="table_section">' + packInfo.Name + '<br><img src="' + packInfo.Image + '" width="100"></div>';
-          packObj = packObj + '<div class="table_section pack-desc-size">' + packInfo.Desc + '</div>';
-          packObj = packObj + '<div class="table_section pack-desc-size">' + packInfo.PerPack + ' cards per pack</div>';
-          if(packInfo.Ratio !== "0") {
-          packObj = packObj + '<div class="table_section pack-desc-size">1:' + packInfo.Ratio + ' insert chance</div>';    
-          }      
+          packObj = packObj + '<div class="table_section" style="display: inline-block;">' + packInfo.Name + '<br><img src="' + packInfo.Image + '" width="100"></div>';
+          packObj = packObj + '<div style="display: inline-block; width:58%"><div>' + packInfo.Desc + '</div>';
+          packObj = packObj + '<div>' + packInfo.PerPack + ' cards per pack</div>';
+            if(parseInt(packInfo.Ratio) >= 1) {
+                packObj = packObj + '<div>1 in ' + packInfo.Ratio + ' pack(s) insert chance</div>';    
+            }     
           packObj = packObj + '<div class="table_section"><button id="btnPack' + index + '" class="ui-btn ui-btn-b">' + packInfo.Cost + '</button></div>';
-          packObj = packObj + '</li>';
+          packObj = packObj + '</div></li>';
           $("#marketList").append(packObj);
 
           $("#btnPack" + index)
             .click(function (event) {
                 event.preventDefault();
 				myApp.confirm('Are you sure?', 'Terror Cards', function () {
+					$(event.target).attr("disabled", true);
         			market_packButton(packInfo);
     			});
 
@@ -98,6 +99,7 @@ function market_FeaturedPack(pArray) {
             .click(function (event) {
                 event.preventDefault();
 				myApp.confirm('Are you sure?', 'Terror Cards', function () {
+					$(event.target).attr("disabled", true);
         			market_packButton(packInfo);
     			});
                 //var r = confirm("Are you sure?");

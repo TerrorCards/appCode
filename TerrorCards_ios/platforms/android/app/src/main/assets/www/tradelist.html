@@ -11,10 +11,12 @@
 				</div>
 				
 				<div class="page_title_photos">
-					<h2 onclick="ShowTrades(gUser.ID);"><img src="images/refresh.png" width="20"> Trades</h2>
-					<div class="gallery_switch">
-						<a href="#" id="trade_view13" class="switcher active"></a>
-					</div>
+					<table width="100%">
+						<tr>
+							<td width="50%" style="text-align: left;"><a onclick="ShowTrades(gUser.ID);"><img src="images/refresh.png" width="20"> Trades</a></td>
+							<td width="50%" style="text-align: right;"><a onclick="ShowHelpAlert('TradeList');">Help</a></td>
+						</tr>
+					</table>					
 				</div>
 
 				<div class="photo-categories">

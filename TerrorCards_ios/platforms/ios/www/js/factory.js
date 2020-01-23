@@ -12,7 +12,7 @@ function factory_loadActiveMelds(pArray) {
           var factoryObj = "";
           factoryObj = factoryObj + '<table width="100%" class="tableFactory">';
           factoryObj = factoryObj + '<tr><td width="45%"><img src="' + factoryInfo.MeldImage + '" width="95%"><br>To obtain the card above, combine the necessary cards on the right.<br><br>Chance of success: '+factoryInfo.MeldChance+'%</td>';
-          factoryObj = factoryObj + '<td width="55%"><table width="100%">';
+          factoryObj = factoryObj + '<td width="55%" style="vertical-align:top"><table width="100%">';
           factoryObj = factoryObj + '<tr><td></td><td>Have / Need</td></tr>';
           if(factoryInfo.MeldRequirement1 != null && factoryInfo.MeldRequirement1 != "0")          
           	{factoryObj = factoryObj + '<tr><td><img src="' + factoryInfo.CardImage1 + '" width="75"></td><td>'+factoryInfo.UserCountNeed1+' / '+factoryInfo.MeldCountNeed1+'</td></tr>';}
@@ -36,6 +36,8 @@ function factory_loadActiveMelds(pArray) {
                 event.preventDefault();
 				myApp.confirm('Are you sure?', 'Terror Cards', function () {
         			//factory_meldButton(factoryInfo);
+        			$(event.target).html("Processing");
+        			$(event.target).attr("disabled", true);
         			callServer("meldFactoryItem", factoryInfo, gUser.ID, factory_showResults);	
     			});
 
@@ -61,11 +63,9 @@ function factory_showResults(pPackResults) {
 	var width = ($( document ).width() - 50);
 	$("#market_packResult").text('');
   if(pPackResults.length > 0) {
-      //console.log(pPackResults);
     $.each(pPackResults, function( index, value ) {
 		$("#market_packResult").append('<img src="' + value.Image + '" alt="image" width="'+width+'" /><br><br>');    	
     });
-    //$("#market_packResult").css("display","block");
     myApp.popup('.pack-result');
   } 
   
