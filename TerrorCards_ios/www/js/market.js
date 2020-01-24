@@ -15,7 +15,7 @@ function market_loadActivePacks(pArray) {
             if(parseInt(packInfo.Ratio) >= 1) {
                 packObj = packObj + '<div>1 in ' + packInfo.Ratio + ' pack(s) insert chance</div>';    
             }     
-          packObj = packObj + '<div class="table_section"><button id="btnPack' + index + '" class="ui-btn ui-btn-b">' + packInfo.Cost + '</button></div>';
+          packObj = packObj + '<div class="table_section" style="width:95%"><button id="btnPack' + index + '" class="ui-btn ui-btn-b">' + packInfo.Cost + '</button></div>';
           packObj = packObj + '</div></li>';
           $("#marketList").append(packObj);
 
