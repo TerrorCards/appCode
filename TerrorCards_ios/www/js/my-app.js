@@ -41,17 +41,17 @@ var myApp = new Framework7({
     tapHoldPreventClicks:true,
     tapHoldDelay:750
 });
-
+/*
 			(function() {
-
-				//lzl = new LazyLoad({
-				//	elements_selector: ".lazy"
-				//});
 				lzlTrade = new LazyLoad({
 					elements_selector: ".lazy-trade"
 				});				
 			})();
+*/
 
+lzlTrade = new LazyLoad({
+	elements_selector: ".lazy-trade"
+});	
 
 checkStorage();
 		 

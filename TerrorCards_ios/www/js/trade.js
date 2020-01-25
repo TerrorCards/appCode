@@ -7,6 +7,7 @@ gTradeMessages = [];
 gTradeCardSets = [];
 
 function checkTradeWithSelf(pUser) {
+
 	if (pUser !== gUser.ID) {
 		callServer("cardSets", null, gUser.ID, loadTradeCardYearDropDown);
 		gTradeListYou = [];
@@ -373,8 +374,8 @@ function TradeCardCount(pName, pSet, pYear, pNode) {
 }
 
 function updateTradeCardCount(pParams) {
-	//var divID = pParams[0].node;
-	//var divCount = $("#"+divID).html(pParams[0].count);
+	var divID = pParams[0].node;
+	var divCount = $("#"+divID).html(pParams[0].count);
 }
 
 function ConfirmTradeList() {
@@ -414,14 +415,8 @@ function ConfirmTradeList() {
 		$("#trade_tradelist_other").append(item);
 
 	});
-	
-	var element_to_scroll_to = $('#trade_tab3p')[0];
-	element_to_scroll_to.scrollIntoView();
-	setTimeout(function() {
-		var element_to_scroll_to = $('#tradeSetupPage')[0];
-		element_to_scroll_to.scrollIntoView();			
-	},500);
-		
+
+	$("#slTradeCardNeeds").trigger("change");
 }
 
 function SaveTrade() {

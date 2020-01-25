@@ -39,8 +39,15 @@ function loadGalleryImages(pArray) {
   	});
   	//lzl.update();
 	lzl = new LazyLoad({
+		container: document.getElementById('photoslist_1')
+	}); 
+	
+	/*
+	lzl = new LazyLoad({
 		elements_selector: ".lazy"
-	});  	
+		container: document.getElementById('scrollingPanel1')
+	}); 	
+	*/
   }
 }
 
