@@ -51,6 +51,10 @@ var myApp = new Framework7({
 
 lzlTrade = new LazyLoad({
 	elements_selector: ".lazy-trade"
+});
+
+lzl= new LazyLoad({
+	elements_selector: ".lazy"
 });	
 
 checkStorage();

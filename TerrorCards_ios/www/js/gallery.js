@@ -37,10 +37,10 @@ function loadGalleryImages(pArray) {
     		//lzl.update();
     	} 			
   	});
-  	//lzl.update();
-	lzl = new LazyLoad({
-		container: document.getElementById('photoslist_1')
-	}); 
+  	lzl.update();
+	//lzl = new LazyLoad({
+	//	container: document.getElementById('photoslist_1')
+	//}); 
 	
 	/*
 	lzl = new LazyLoad({
