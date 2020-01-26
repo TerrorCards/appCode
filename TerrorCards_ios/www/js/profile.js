@@ -1,3 +1,7 @@
+$('#checkUserSubmit').on("click", loginCheck);
+$('#createDefaultAccount').on("click", createDefaultAccount);
+
+
 function loginCheck() {
     if(checkVirtual())
     {	
@@ -17,8 +21,7 @@ function loginCheckResult(pParam) {
 	}	
 }
 
-function checkVirtual(){
-	/*
+function checkVirtual(){	
     var virtualCheck = device.isVirtual;
     if(virtualCheck == null || virtualCheck == true )
     {
@@ -28,7 +31,6 @@ function checkVirtual(){
     else{
         return true;
     }
-    */
    return true;
 }
 
