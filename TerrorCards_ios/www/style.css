@@ -53,7 +53,6 @@ overflow-x: hidden;
 body {
 font-family: 'Source Sans Pro', sans-serif;
 margin: 0;
-padding: 0;
 color: #232323;
 font-size: 14px;
 line-height: 1.4;
@@ -61,6 +60,11 @@ width: 100%;
 -webkit-text-size-adjust: 100%;
 overflow: hidden;
 font-weight:300;
+background-color: #000000;
+}
+body {
+  padding-top: constant(safe-area-inset-top); /* iOS 11.0 */
+  padding-top: env(safe-area-inset-top); /* iOS 11.2 */
 }
 .clear{ 
 clear:both; 
