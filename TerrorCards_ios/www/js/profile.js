@@ -21,7 +21,8 @@ function loginCheckResult(pParam) {
 	}	
 }
 
-function checkVirtual(){	
+function checkVirtual(){
+	/*	
     var virtualCheck = device.isVirtual;
     if(virtualCheck == null || virtualCheck == true )
     {
@@ -30,7 +31,8 @@ function checkVirtual(){
     }
     else{
         return true;
-    }
+	}
+	*/
    return true;
 }
 
