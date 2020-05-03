@@ -1,7 +1,6 @@
 $('#checkUserSubmit').on("click", loginCheck);
 $('#createDefaultAccount').on("click", createDefaultAccount);
 
-
 function loginCheck() {
     if(checkVirtual())
     {	
@@ -21,8 +20,7 @@ function loginCheckResult(pParam) {
 	}	
 }
 
-function checkVirtual(){
-	/*	
+function checkVirtual(){		
     var virtualCheck = device.isVirtual;
     if(virtualCheck == null || virtualCheck == true )
     {
@@ -32,7 +30,6 @@ function checkVirtual(){
     else{
         return true;
 	}
-	*/
    return true;
 }
 
@@ -164,6 +161,23 @@ function submitContactUs() {
 function contactUsResponse(pParam) {
 	myApp.alert(pParam[0].Message, 'Terror Cards');	
 	myApp.closeModal('.popup-contactus');
+}
+
+
+//********* Promo Code ***********/
+function checkPromoCode() {
+	if($("#txtPromoCode").val() === "") {
+		myApp.alert("Sorry, promo code is blank", 'Terror Cards');	
+	} else {
+		var data = {promo:$("#txtPromoCode").val()};
+		callServer("processPromo",data,gUser.ID,promoResponse);	
+	}	
+}
+
+function promoResponse(msg) {
+	myApp.alert(msg[0].Message, 'Terror Cards');
+	$("#txtPromoCode").val("");	
+	callServer("userInfo", null, gUser.ID, appStateCalls);	
 }
 
 

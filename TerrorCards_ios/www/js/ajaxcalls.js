@@ -196,13 +196,13 @@ function callServer(pTask,pData,pUserId,pCallback) {
         });      
     } 
     else if (pTask === "loginCheck") {
-    	var jsonstr = prepData(pData);
+        var jsonstr = prepData(pData);
         $.post( serverpath + "checkLogin.php", { uPassword: pData, uUserId: pUserId, uAction: "checkLogin" })
           .done(function( result ) {
-          	//console.log(result);
+              //console.log(result);
              var data = jQuery.parseJSON(result);
-             pCallback(data);
-        });      
+             pCallback(data);       
+            });      
     } 
     else if (pTask === "userInfo") {
     	var jsonstr = prepData(pData);
@@ -239,7 +239,16 @@ function callServer(pTask,pData,pUserId,pCallback) {
              var data = jQuery.parseJSON(result);
              pCallback(data);
         });      
-    }        
+    }  
+    else if (pTask === "processPromo") {
+    	var jsonstr = prepData(pData);
+        $.post( serverpath + "promoCode.php", { uContent: jsonstr, uUserId: pUserId, uAction: "process" })
+          .done(function( result ) {
+            //console.log(result);
+             var data = jQuery.parseJSON(result);
+             pCallback(data);
+        });      
+    }         
     //******** Message Boards *********
     else if (pTask === "messagesFull") {
     	var jsonstr = prepData(pData);
